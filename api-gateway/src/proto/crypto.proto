@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package crypto;
+
+service CryptoTransactionService {
+    rpc Create(Transaction) returns(Transaction) {}
+    rpc Get(TransactionById) returns(Transaction) {}
+    rpc Update(Transaction) returns(Transaction) {}
+    rpc Delete(TransactionById) returns(Empty) {}
+}
+
+message Empty {}
+
+message TransactionById {
+    int32 id = 1;
+}
+
+message Transaction {
+    int32 id = 1;
+    string timestamp = 2;
+    string user_id = 3;
+    string crypto_name = 4;
+    float amount = 5;
+    string transaction_type = 6;
+}
